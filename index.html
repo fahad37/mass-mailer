@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Mailer for Gmail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mass Mailer</h1>
+            <p>Simple mass email tool for Gmail (using App Passwords)</p>
+        </header>
+
+        <main>
+            <section class="card config-section">
+                <h2>1. SMTP Configuration</h2>
+                <div class="form-group">
+                    <label for="smtp-email">Gmail Address</label>
+                    <input type="email" id="smtp-email" placeholder="you@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="smtp-password">App Password</label>
+                    <input type="password" id="smtp-password" placeholder="xxxx xxxx xxxx xxxx">
+                    <small>Use an <a href="https://myaccount.google.com/apppasswords" target="_blank">App Password</a>, not your login password.</small>
+                </div>
+            </section>
+
+            <section class="card contacts-section">
+                <h2>2. Contacts</h2>
+                <p>Enter CSV data (header row required). Example: <code>email,name</code></p>
+                <textarea id="contacts-input" rows="5" placeholder="email,name
+alice@example.com,Alice
+bob@example.com,Bob"></textarea>
+            </section>
+
+            <section class="card template-section">
+                <h2>3. Compose Email</h2>
+                <div class="form-group">
+                    <label for="email-subject">Subject</label>
+                    <input type="text" id="email-subject" placeholder="Hello {{name}}!">
+                </div>
+                <div class="form-group">
+                    <label for="email-body">Body</label>
+                    <textarea id="email-body" rows="8" placeholder="Hi {{name}},
+
+Check out this update..."></textarea>
+                </div>
+                <div class="actions">
+                    <button id="send-btn" class="btn-primary">Send Emails</button>
+                </div>
+            </section>
+
+            <section class="card status-section" id="status-section" style="display: none;">
+                <h2>Status</h2>
+                <div id="status-log"></div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
